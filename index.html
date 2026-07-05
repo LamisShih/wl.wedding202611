@@ -184,7 +184,7 @@
                 </div>
 
                 <div class="relative overflow-hidden rounded-xl group cursor-pointer border border-stone-200/40 shadow-sm h-[300px] md:h-[420px]" onclick="openLightbox('_DSC2297.jpg')">
-                    <img src="DSC2297.jpg" alt="婚紗相片 8" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <img src="_DSC2297.jpg" alt="婚紗相片 8" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/35 transition-all duration-300 flex items-center justify-center">
                         <i class="fa-solid fa-magnifying-glass-plus text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
                     </div>
@@ -728,7 +728,7 @@
         ];
 
         let activeBlessings = [...DEFAULT_BLESSINGS];
-        let unlockedGuestName = "https://script.google.com/macros/s/AKfycbw5yzZ5lj2hVQmt_WKEjLVKW9dN1xnJYZs6cjwLuGQcTSdr8yU4mldDnj1mNa99OjyEXg/exec";
+        let unlockedGuestName = "";
         let alreadySubmittedNames = [];
         const LANES_COUNT = 8;
         let lastLaneUsed = -1;
@@ -757,21 +757,34 @@
                 document.getElementById("seconds").innerText = "00";
             }
         }, 1000);
-
+        
         window.onload = async function() {
-            startDanmakuEngine();
-            await fetchSubmittedNames();
+    // 1. 先去載入 Google 試算表的已填寫姓名、動態解鎖名單與歷史留言
+        await fetchSubmittedNames();
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const passParam = urlParams.get('pass');
-            if (passParam) {
-                const decodedPass = decodeURIComponent(passParam).trim();
-                const matchedRole = INVITE_LIST[decodedPass] || INVITE_LIST[decodedPass.toLowerCase()];
-                if (matchedRole) {
-                    unlockInvitation(matchedRole, decodedPass);
-                }
-            }
-        };
+    // 2. 歷史留言一匯入完畢，立刻「搶先發射」5 條雲端留言填滿相片牆
+        for (let i = 0; i < Math.min(5, activeBlessings.length); i++) {
+        // 稍微錯開每條搶先發射的時間點（增加層次感）
+        setTimeout(() => {
+            const randomIndex = Math.floor(Math.random() * activeBlessings.length);
+            spawnDanmaku(activeBlessings[randomIndex], false);
+        }, i * 300);
+    }
+
+    // 3. 隨後正式啟動每 1 秒發射一條的輪播引擎
+    startDanmakuEngine();
+
+    // 4. 檢查 URL 參數是否預載解鎖
+    const urlParams = new URLSearchParams(window.location.search);
+    const passParam = urlParams.get('pass');
+    if (passParam) {
+        const decodedPass = decodeURIComponent(passParam).trim();
+        const matchedRole = INVITE_LIST[decodedPass] || INVITE_LIST[decodedPass.toLowerCase()];
+        if (matchedRole) {
+            unlockInvitation(matchedRole, decodedPass);
+        }
+    }
+};
 
         function startDanmakuEngine() {
             setInterval(() => {
