@@ -1,0 +1,78 @@
+/* ==================== style.css 完整修復版 ==================== */
+body {
+    font-family: 'Inter', 'Noto Serif TC', serif;
+    background-color: #faf8f5;
+    color: #2c2a29;
+    scroll-behavior: smooth;
+}
+
+.font-serif-elegant {
+    font-family: 'Cinzel', 'Noto Serif TC', serif;
+}
+
+/* 金色光澤與漸層效果 */
+.gold-gradient-text {
+    background: linear-gradient(135deg, #b89742 0%, #d4af37 50%, #f3e5ab 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+    background: linear-gradient(135deg, #b89742 0%, #d4af37 100%);
+}
+
+.bg-forest {
+    background-color: #1a3020;
+}
+
+.text-forest {
+    color: #1a3020;
+}
+
+.border-forest {
+    border-color: #1a3020; 
+}
+
+/* 彈幕移動動畫 - 起點與終點設定（100vw 全螢幕最右滑至最左） */
+@keyframes danmaku-move {
+    from { transform: translateX(100vw); } 
+    to { transform: translateX(-100%); }   
+}
+
+/* 彈幕基礎外觀泡泡（重要：之前在 html 分離時漏掉了這一段） */
+.danmaku-bubble {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: danmaku-move linear forwards;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: #2c2a29;
+    backdrop-filter: blur(4px);
+    z-index: 30;
+}
+
+/* 親友在場中點擊送出的加亮黃金彈幕 */
+.danmaku-bubble-custom {
+    background: linear-gradient(135deg, rgba(26, 48, 32, 0.95) 0%, rgba(44, 76, 52, 0.95) 100%);
+    color: #f3e5ab;
+    border: 1.5px solid #d4af37;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(184, 151, 66, 0.45);
+}
+
+.shake-animation {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
