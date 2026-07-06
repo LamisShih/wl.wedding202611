@@ -17,16 +17,16 @@ let alreadySubmittedNames = [];
 const LANES_COUNT = 8;
 let lastLaneUsed = -1;
 
-// 8 張相片資料庫 (已經修復 _DSC2297 漏掉的底線)
+// 8 張相片資料庫
 const galleryImages = [
     { src: 'DSC00587', alt: '婚紗相片 1' },
-    { src: 'DSC00744', alt: '婚紗相片 5' },
-    { src: 'IMG_2918', alt: '婚紗相片 4' },
-    { src: 'wl_33',    alt: '婚紗相片 2' },
-    { src: 'DSC2297', alt: '婚紗相片 8' },
+    { src: 'DSC00744', alt: '婚紗相片 2' },
+    { src: 'IMG_2918', alt: '婚紗相片 3'},
+    { src: 'wl_33',    alt: '婚紗相片 4' },
+    { src: 'DSC2297',  alt: '婚紗相片 5' },
     { src: 'IMG_2742', alt: '婚紗相片 6' },
     { src: 'wl_46',    alt: '婚紗相片 7' },
-    { src: 'IMG_0488', alt: '婚紗相片 3' }
+    { src: 'IMG_0488', alt: '婚紗相片 8' }
 ];
 
 // ==================== 倒數計時引擎 ====================
@@ -49,15 +49,11 @@ const countdownTimer = setInterval(function() {
     }
 }, 1000);
 
-// ==================== 網頁啟動核心 (最高優先執行) ====================
+// ==================== 網頁啟動核心 ====================
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. 極速預載照片
     renderGallery();
-    
-    // 2. 啟動彈幕引擎
     startDanmakuEngine();
 
-    // 3. 背景自動讀取雲端名單與留言
     fetchSubmittedNames().then(() => {
         for (let i = 0; i < Math.min(3, activeBlessings.length); i++) {
             setTimeout(() => {
@@ -67,19 +63,18 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // 4. 自動解鎖判斷
     const urlParams = new URLSearchParams(window.location.search);
     const passParam = urlParams.get('pass');
     if (passParam) {
         const decodedPass = decodeURIComponent(passParam).trim();
-        const matchedRole = INVITE_LIST[decodedPass] || INVITE_LIST[decodedPass.toLowerCase()];
-        if (matchedRole) unlockInvitation(matchedRole, decodedPass);
+        const match = findMatchedRoleAndName(decodedPass);
+        if (match.role) unlockInvitation(match.role, match.name);
     }
 });
 
 // ==================== 核心功能函數 ====================
 
-// 動態生成相簿 (結合 Eager Loading 與 Fetch Priority 加速技術)
+// 🚀 修正效能：移除 sync 解碼與 eager 載入，讓手機不卡頓
 function renderGallery() {
     const gridContainer = document.getElementById('gallery-grid');
     if (!gridContainer) return;
@@ -89,8 +84,7 @@ function renderGallery() {
         return `
             <div class="relative overflow-hidden rounded-xl group cursor-pointer border border-stone-200/40 shadow-sm h-[300px] md:h-[420px]" 
                  onclick="openLightbox('${webpUrl}')">
-                <!-- 強制使用最高優先權下載且立刻解碼 -->
-                <img src="${webpUrl}" loading="eager" fetchpriority="high" decoding="sync" alt="${img.alt}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <img src="${webpUrl}" loading="lazy" decoding="async" alt="${img.alt}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                 <div class="absolute inset-0 bg-stone-900/10 group-hover:bg-stone-900/35 transition-all duration-300 flex items-center justify-center">
                     <i class="fa-solid fa-magnifying-glass-plus text-white text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
                 </div>
@@ -99,13 +93,13 @@ function renderGallery() {
     }).join('');
 }
 
-// 彈幕發射器
+// 🚀 修正效能：將彈幕間率調降至 2000ms，減輕手機渲染負擔
 function startDanmakuEngine() {
     setInterval(() => {
         if (document.hidden) return;
         const randomIndex = Math.floor(Math.random() * activeBlessings.length);
         spawnDanmaku(activeBlessings[randomIndex], false);
-    }, 1500);
+    }, 4000);
 }
 
 function spawnDanmaku(text, isCustom = false) {
@@ -129,7 +123,6 @@ function spawnDanmaku(text, isCustom = false) {
     setTimeout(() => { bubble.remove(); }, duration * 1000);
 }
 
-// 提交留言
 async function submitBlessing(e) {
     e.preventDefault();
     let sender = document.getElementById('blessing-sender').value.trim() || "匿名親友";
@@ -161,7 +154,6 @@ async function submitBlessing(e) {
     btn.innerHTML = originalText;
 }
 
-// 背景讀取資料
 async function fetchSubmittedNames() {
     if (!GOOGLE_SCRIPT_URL) return;
     try {
@@ -177,15 +169,42 @@ async function fetchSubmittedNames() {
     } catch (e) { console.warn(e); }
 }
 
-// 驗證解鎖
+// 🛡️ 新增：防呆比對引擎（無視大小寫、無視任何空格）
+function findMatchedRoleAndName(rawInput) {
+    if (!rawInput) return { role: null, name: rawInput };
+    
+    // 將輸入值轉小寫並拔除所有空白
+    let normalizedInput = rawInput.toLowerCase().replace(/\s+/g, '');
+    
+    for (let key in INVITE_LIST) {
+        // 將名單庫的 Key 也轉小寫並拔除所有空白
+        let normalizedKey = key.toLowerCase().replace(/\s+/g, '');
+        if (normalizedInput === normalizedKey) {
+            // 比對成功，回傳對應的權限，以及「名單上正確的原始名稱」(讓畫面顯示不會擠在一起)
+            return { role: INVITE_LIST[key], name: key }; 
+        }
+    }
+    return { role: null, name: rawInput };
+}
+
+// 觸發手動解鎖
 function handleManualUnlock() {
     const rawInput = document.getElementById('passcode-input').value.trim();
     if (!rawInput) return;
     
-    const matchedRole = INVITE_LIST[rawInput] || INVITE_LIST[rawInput.toLowerCase()];
-    if (matchedRole) {
-        unlockInvitation(matchedRole, rawInput);
+    // 使用新的防呆引擎檢查
+    const match = findMatchedRoleAndName(rawInput);
+    
+    if (match.role) {
+        // 若為系統通用密碼，維持顯示使用者當下輸入的名字
+        const defaultPasses = ['family', 'party', 'all', 'willylamis'];
+        if (defaultPasses.includes(match.name.toLowerCase())) {
+            unlockInvitation(match.role, rawInput);
+        } else {
+            unlockInvitation(match.role, match.name);
+        }
     } else {
+        // 解鎖失敗動畫
         const inputEl = document.getElementById('passcode-input');
         inputEl.classList.add('border-red-500', 'shake-animation');
         inputEl.placeholder = '不在受邀名單中，請重新確認';
@@ -218,7 +237,7 @@ function unlockInvitation(role, guestName) {
         document.getElementById('section-family').classList.remove('hidden');
         document.getElementById('map-family').classList.remove('hidden');
     } else if (role === 'party') {
-        badge.innerText = guestName + " 的專屬派對邀請";
+        badge.innerText = guestName + " 的專屬派驚邀請";
         document.getElementById('section-party').classList.remove('hidden');
         document.getElementById('map-party').classList.remove('hidden');
     } else if (role === 'all') {
@@ -248,7 +267,6 @@ function handleGuestsChange() {
     }
 }
 
-// 防重複檢查核心
 function checkSubmissionStatus() {
     if (!unlockedGuestName) return;
     const normalizedUnlocked = unlockedGuestName.trim().toLowerCase();
@@ -323,7 +341,6 @@ async function submitRsvp(e) {
     const guestName = formData.get('name').toString().trim();
     const normalizedName = guestName.toLowerCase();
 
-    // 防禦連點與重複送出
     const hasSubmitted = alreadySubmittedNames.some(name => name.trim().toLowerCase() === normalizedName) || 
                          localStorage.getItem("rsvp_submitted_" + normalizedName) === "true";
 
