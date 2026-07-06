@@ -5,18 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Willy & Lamis ✦ 婚禮與派對邀請函</title>
     
+    <!-- 🚀 加速優化：提早建立外部伺服器連線 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
-    <link rel="preload" as="image" href="wl_47.jpg">
+    <!-- 🚀 加速優化：預載入首頁滿版背景圖 -->
+    <link rel="preload" as="image" href="wl_47.webp">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- 引入外部 CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="overflow-x-hidden">
@@ -43,7 +44,6 @@
                 <span class="text-forest block md:inline">Lamis</span>
             </h1>
             
-            <!-- 新郎新娘優雅中文名字展示區 -->
             <div class="flex items-center justify-center space-x-4 text-stone-600 font-serif-elegant text-lg md:text-2xl tracking-[0.25em] font-medium animate-fade-in">
                 <span>李 維</span>
                 <span class="text-amber-600/60 text-sm">✦</span>
@@ -431,7 +431,8 @@
         <button class="absolute top-6 right-6 text-white/80 hover:text-white transition text-3xl p-2 z-[70]" onclick="closeLightbox()">
             <i class="fa-solid fa-xmark"></i>
         </button>
-        <img id="lightbox-img" src="" class="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
+        <!-- 🚀 加速優化：加入 loading="lazy" 避免一開始佔用頻寬 -->
+        <img id="lightbox-img" src="" loading="lazy" class="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
     </div>
 
     <!-- ==================== RSVP 問卷彈出視窗 ==================== -->
@@ -567,13 +568,8 @@
             </button>
         </div>
     </div>
-<div id="lightbox-modal" class="fixed inset-0 bg-stone-900/95 z-[60] flex items-center justify-center p-4 hidden transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
-        <button class="absolute top-6 right-6 text-white/80 hover:text-white transition text-3xl p-2 z-[70]" onclick="closeLightbox()">
-            <i class="fa-solid fa-xmark"></i>
-        </button>
-        <img id="lightbox-img" src="" loading="lazy" class="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
-    </div>
-  <footer class="bg-forest text-stone-300 py-16 px-4 text-center mt-20 relative">
+
+    <footer class="bg-forest text-stone-300 py-16 px-4 text-center mt-20 relative">
         <div class="max-w-2xl mx-auto space-y-6">
             <h2 class="font-serif-elegant text-3xl text-white tracking-widest">Willy &amp; Lamis</h2>
             <p class="text-sm text-stone-400 font-light max-w-sm mx-auto leading-relaxed">
@@ -583,6 +579,8 @@
             <p class="text-[10px] text-stone-500 uppercase tracking-widest">© 2026 Willy &amp; Lamis. Made with Love.</p>
         </div>
     </footer>
- <script src="script.js"></script>
+
+ <!-- 🚀 加速優化：加入 defer 延遲載入 JavaScript，不阻塞 HTML 渲染 -->
+ <script src="script.js" defer></script>
 </body>
 </html>
