@@ -567,7 +567,19 @@
             </button>
         </div>
     </div>
+<div id="lightbox-modal" class="fixed inset-0 bg-stone-900/95 z-[60] flex items-center justify-center p-4 hidden transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white/80 hover:text-white transition text-3xl p-2 z-[70]" onclick="closeLightbox()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="lightbox-img" src="" loading="lazy" class="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
+    </div>
 
+    <footer class="bg-forest text-stone-300 py-16 px-4 text-center mt-20 relative">
+        </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
     <footer class="bg-forest text-stone-300 py-16 px-4 text-center mt-20 relative">
         <div class="max-w-2xl mx-auto space-y-6">
             <h2 class="font-serif-elegant text-3xl text-white tracking-widest">Willy &amp; Lamis</h2>
