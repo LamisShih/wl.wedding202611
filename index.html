@@ -8,7 +8,589 @@
     <!-- 🚀 加速優化：提早建立外部伺服器連線 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com"><!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willy & Lamis ✦ 婚禮與派對邀請函</title>
+    <meta property="og:title" content="Willy & Lamis ✦ 婚禮邀請函">
+    <meta property="og:description" content="生命中最重要的時刻，期待有你一同見證。誠摯邀請您參與我們的婚禮派對！">
+    <meta property="og:image" content="https://lamisshih.github.io/wl.wedding202611/wl_47.webp"> <meta property="og:type" content="website">
+    
+    <!-- 🚀 加速優化：提早建立外部伺服器連線 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- 🚀 加速優化：預載入首頁滿版背景圖 -->
+    <link rel="preload" as="image" href="wl_47.webp">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Serif+TC:wght@300;400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- 引入外部 CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="overflow-x-hidden">
+
+    <nav class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100 py-4 px-6 flex justify-between items-center">
+        <a href="#" class="font-serif-elegant text-xl font-bold tracking-wider text-forest">W &amp; L</a>
+        <div class="flex space-x-6 items-center">
+            <span id="nav-badge" class="hidden text-xs bg-gold-gradient text-white px-2.5 py-1 rounded-full font-semibold shadow-sm animate-pulse">
+                專屬邀請已解鎖
+            </span>
+        </div>
+    </nav>
+
+    <!-- ==================== 1. 名稱輸入首頁 ==================== -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-16 overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-amber-50/60 via-stone-50 to-amber-100/20">
+        <div class="absolute inset-0 bg-cover bg-center opacity-[0.3] pointer-events-none" style="background-image: url('wl_47.webp')"></div>
+        
+        <div class="z-10 max-w-3xl mx-auto space-y-4">
+            <span class="font-serif-elegant text-lg md:text-xl tracking-[0.3em] text-amber-700 uppercase block animate-fade-in">We are Getting Married</span>
+            
+            <h1 class="font-serif-elegant text-5xl md:text-7xl font-bold tracking-normal leading-tight">
+                <span class="text-forest block md:inline">Willy</span>
+                <span class="gold-gradient-text mx-4 font-light">&amp;</span>
+                <span class="text-forest block md:inline">Lamis</span>
+            </h1>
+            
+            <div class="flex items-center justify-center space-x-4 text-stone-600 font-serif-elegant text-lg md:text-2xl tracking-[0.25em] font-medium animate-fade-in">
+                <span>李 維</span>
+                <span class="text-amber-600/60 text-sm">✦</span>
+                <span>石蕙愷</span>
+            </div>
+            
+            <div class="w-24 h-[1px] bg-amber-600/50 mx-auto my-4"></div>
+            
+            <p class="text-gray-600 tracking-wider text-sm md:text-base max-w-lg mx-auto leading-relaxed">
+                生命中最重要的時刻，期待有你一同見證。<br>
+                請在下方輸入姓名開啟專屬邀請函。
+            </p>
+        </div>
+
+    </header>
+
+    <!-- ==================== 2. 幸福相冊 & 祝福留言區 (免解鎖，彈幕飛越相片) ==================== -->
+<section id="section-blessings" class="w-full py-12 bg-white border-b border-stone-100">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-6 mb-8">
+            <div class="max-w-xl mx-auto space-y-3">
+                <span class="font-serif-elegant text-xs tracking-[0.2em] text-amber-700 uppercase block">Sweet Moments & Blessings</span>
+                <h3 class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest">我們的幸福相冊 ✦ 祝福彈幕</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">
+                    在下方留下祝福，送出後您的溫馨字句！點擊相片亦可放大檢視。❤️
+                </p>
+            </div>
+            
+            <form id="blessing-form" onsubmit="submitBlessing(event)" class="max-w-md mx-auto space-y-4 text-left bg-stone-50/60 p-5 rounded-2xl border border-stone-200/50 shadow-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <input type="text" id="blessing-text" required placeholder="寫下祝福..." 
+                        class="sm:col-span-2 px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50 text-sm bg-white">
+                    
+                    <input type="text" id="blessing-sender" placeholder="姓名 (選填)" 
+                        class="sm:col-span-1 px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50 text-sm bg-white">
+                </div>
+                <button type="submit" id="btn-submit-blessing" class="w-full bg-forest hover:bg-forest/95 text-white py-3.5 rounded-xl font-semibold shadow-md transition duration-300 transform hover:-translate-y-0.5 text-sm">
+                    <i class="fa-solid fa-paper-plane mr-2"></i>送出祝福
+                </button>
+            </form>
+        </div>
+
+        <div class="relative w-full overflow-hidden bg-stone-50 py-4 border-y border-stone-200/30">
+            <div id="danmaku-container" class="absolute inset-x-0 top-0 bottom-0 pointer-events-none z-20 overflow-hidden select-none w-full"></div>
+            
+           <div id="gallery-grid" class="gallery-5-layout"></div>
+        </div>
+    </section>
+
+    <!-- ==================== 3. 邀請解鎖區 ==================== -->
+    <section id="gate-section" class="py-20 px-4 bg-stone-100/60 border-y border-stone-200/50">
+        <div class="max-w-md mx-auto text-center space-y-6">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-50 text-amber-600 border border-amber-200/50 mb-2">
+                <i class="fa-solid fa-key text-lg"></i>
+            </div>
+            <h2 class="font-serif-elegant text-2xl font-semibold text-stone-800">請輸入受邀姓名</h2>
+            <p class="text-sm text-stone-500 max-w-xs mx-auto">請輸入您的「真實姓名」或「邀請碼」以解鎖您的專屬活動資訊與出席調查。</p>
+            
+            <div class="relative max-w-sm mx-auto">
+                <input type="text" id="passcode-input" placeholder="請輸入您的姓名 / 邀請碼" 
+                    class="w-full px-5 py-3.5 rounded-xl border border-stone-300 focus:outline-none focus:ring-2 focus:ring-amber-500/50 bg-white shadow-inner text-center tracking-widest text-stone-700">
+                <button onclick="handleManualUnlock()" class="mt-4 w-full bg-forest text-white py-3.5 rounded-xl font-semibold shadow-md hover:bg-forest/95 transition duration-300 transform hover:-translate-y-0.5">
+                    解鎖專屬邀請
+                </button>
+            </div>
+
+            <!-- 貼心提醒與無法解鎖申訴備註 -->
+            <p class="text-[11px] text-stone-400 max-w-xs mx-auto leading-relaxed border-t border-stone-200/60 pt-4 mt-6">
+                <i class="fa-solid fa-circle-info text-amber-600/80 mr-1"></i>
+                若輸入你的名字無法解鎖，請先確認該網站連結是否為新郎或新娘本人發送；若非本人發送，請確認是否有其他親友幫你填寫報名參加。若以上皆非，你的名字將無法解鎖網站。
+            </p>
+        </div>
+    </section>
+
+    <!-- 解鎖後的主容器 (活動細節、地圖、倒數與座位表) -->
+    <main id="event-details-container" class="hidden py-10 space-y-16">
+
+        <!-- ==================== 4. 共同好友(All)專屬說明卡片 (解鎖後，問卷前) ==================== -->
+        <div id="all-version-notice" class="hidden max-w-4xl mx-auto px-4">
+            <div class="bg-gradient-to-r from-amber-50/90 to-emerald-50/90 rounded-3xl p-6 md:p-8 border border-amber-200/40 shadow-lg space-y-4 relative overflow-hidden">
+                <div class="absolute -right-8 -bottom-8 text-amber-200/20 text-8xl pointer-events-none">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <div class="flex items-center space-x-3 text-amber-800">
+                    <span class="flex items-center justify-center w-8 h-8 rounded-full bg-amber-100 text-amber-700 font-bold text-sm">✦</span>
+                    <h4 class="font-bold text-lg font-serif-elegant">特別驚喜 ✦ 專屬雙重邀請</h4>
+                </div>
+                <p class="text-stone-700 text-sm md:text-base leading-relaxed font-medium">
+                    恭喜你特別的幸運！本次我們依照賓客的組成分為「家宴場」（多數人為家屬及同事，活動流程偏向正式婚禮）與「共同朋友場」（多數人為新人的高中同學，沒有固定活動流程，傾向讓大家交流聊天），因我們無法決定要讓你參加哪一個場次，因此我們將決定權交給你。
+                </p>
+            </div>
+        </div>
+        
+        <!-- ==================== 5. 活動資訊 ==================== -->
+        <div id="section-events" class="space-y-12">
+            <!-- 【家宴版區塊】 -->
+            <section id="section-family" class="hidden px-4 max-w-4xl mx-auto">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-stone-100 flex flex-col md:flex-row transition-all duration-500 hover:shadow-2xl">
+                    <div class="md:w-5/12 bg-amber-50/50 p-8 flex flex-col justify-between relative overflow-hidden min-h-[320px]">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://placehold.co/600x800/e6dfd5/ffffff?text=Banquet');"></div>
+                        <div class="z-10">
+                            <h3 class="font-serif-elegant text-3xl font-bold text-forest leading-snug">家宴場 ✦ 李家有囍</h3>
+                            <p class="text-xs text-stone-400 mt-2 tracking-widest">FAMILY BANQUET</p>
+                        </div>
+                        
+                        <div class="z-10 space-y-4 pt-8 border-t border-stone-200/60">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-calendar-days text-amber-600 mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-stone-400 font-semibold uppercase">日期與時間</p>
+                                    <p class="text-sm font-semibold text-stone-700">11/22 週日 中午</p>
+                                    <p class="text-xs text-stone-500 mt-0.5">11:30 可入場 ✦ 12:00 正式開始</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-map-location-dot text-amber-600 mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-stone-400 font-semibold uppercase">舉辦地點</p>
+                                    <p class="text-sm font-semibold text-stone-700">李家新居</p>
+                                    <p class="text-xs text-stone-500 mt-0.5">壯圍鄉功勞村功勞路15號（輕藍民宿旁）</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-2 text-amber-700">
+                                <span class="h-[1px] w-8 bg-amber-600/50"></span>
+                                <span class="text-xs tracking-widest uppercase">摯愛家人與朋友</span>
+                            </div>
+                            <h4 class="text-2xl font-bold text-stone-800 font-serif-elegant">新居落成、新婚誌喜</h4>
+                            <p class="text-stone-600 text-sm leading-relaxed">
+                                我們結婚了！在這生命中的重要時刻，我們誠摯地邀請最親近的您，一同來到李家新居，在溫馨的氛圍中見證我們的幸福，分享這份最真摯的喜悅。期待當天與您相聚！
+                            </p>
+                        </div>
+
+                        <div class="pt-8">
+                            <button id="btn-family-rsvp" onclick="openRsvpModal('family')" class="w-full bg-forest hover:bg-forest/90 text-white text-center py-3.5 rounded-xl font-semibold shadow-md transition duration-300">
+                                <i class="fa-solid fa-envelope-open-text mr-2"></i>填寫李家有囍出席調查
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 【朋友 Party 版區塊】 -->
+            <section id="section-party" class="hidden px-4 max-w-4xl mx-auto">
+                <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-stone-100 flex flex-col md:flex-row-reverse transition-all duration-500 hover:shadow-2xl">
+                    <div class="md:w-5/12 bg-amber-50/50 p-8 flex flex-col justify-between relative overflow-hidden min-h-[320px]">
+                        <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://placehold.co/600x800/e6dfd5/ffffff?text=Party');"></div>
+                        <div class="z-10">
+                            <h3 class="font-serif-elegant text-3xl font-bold text-forest leading-snug">派對場 ✦ 石在有李</h3>
+                            <p class="text-xs text-stone-400 mt-2 tracking-widest">FRIENDS VILLA PARTY</p>
+                        </div>
+                        
+                        <div class="z-10 space-y-4 pt-8 border-t border-stone-200/60">
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-calendar-days text-emerald-600 mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-stone-400 font-semibold uppercase">日期與時間</p>
+                                    <p class="text-sm font-semibold text-stone-700">11/21 週六 下午</p>
+                                    <p class="text-xs text-stone-500 mt-0.5">16:00 可入場 ✦ 16:30 正式開始<br>(預計 19:30 結束)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="fa-solid fa-hotel text-emerald-600 mt-1"></i>
+                                <div>
+                                    <p class="text-xs text-stone-400 font-semibold uppercase">舉辦地點</p>
+                                    <p class="text-sm font-semibold text-stone-700">星野田園民宿</p>
+                                    <p class="text-xs text-stone-500 mt-0.5">宜蘭縣壯圍鄉美福二路80號</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-between">
+                        <div class="space-y-6">
+                            <div class="flex items-center space-x-2 text-emerald-700">
+                                <span class="h-[1px] w-8 bg-emerald-600/50"></span>
+                                <span class="text-xs tracking-widest uppercase">親愛的摯友們</span>
+                            </div>
+                            <h4 class="text-2xl font-bold text-stone-800 font-serif-elegant">關於新郎即將被丟進泳池的那檔事</h4>
+                            <p class="text-stone-600 text-sm leading-relaxed">
+                                各位兄弟姐妹們，我們要辦婚禮派對啦！<br>
+                                我們包下了「星野田園民宿」，現場有<b>露天泳池、遮棚烤肉區、KTV 歡唱，</b>還有<b>電動麻將桌，</b>期待在這歡樂的氣氛中，與大家一起分享結婚的喜悅！🍻
+                            </p>
+                            
+                            <div class="mt-2 text-xs text-stone-400 bg-stone-50 p-3 rounded-lg border border-stone-200/50">
+                                <i class="fa-solid fa-house-chimney mr-1 text-emerald-600"></i> 民宿官方介紹：
+                                <a href="https://twstay.com/RWD2/index.aspx?BNB=hoshinogarden" target="_blank" rel="noopener noreferrer" class="text-emerald-600 hover:underline inline-flex items-center font-semibold">
+                                    點此查看星野田園民宿設施 <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="pt-8">
+                            <button id="btn-party-rsvp" onclick="openRsvpModal('party')" class="w-full bg-forest hover:bg-forest/90 text-white text-center py-3.5 rounded-xl font-semibold shadow-md transition duration-300">
+                                <i class="fa-solid fa-envelope-open-text mr-2"></i>填寫石在有李出席調查
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ==================== 6. 倒數計時 ==================== -->
+        <section id="countdown-section" class="py-12 px-4 max-w-xl mx-auto text-center space-y-4">
+            <div class="w-12 h-[1px] bg-amber-600/30 mx-auto mb-6"></div>
+            <span class="font-serif-elegant text-xs tracking-[0.2em] text-amber-700 uppercase block">Countdown to Our Special Day</span>
+            <h4 class="font-serif-elegant text-xl font-bold text-forest">期待與您相見的時刻</h4>
+            <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto bg-white p-4 rounded-2xl shadow-md border border-amber-100/30">
+                <div class="text-center border-r border-stone-100 last:border-0">
+                    <span id="days" class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest block">00</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider">Days</span>
+                </div>
+                <div class="text-center border-r border-stone-100 last:border-0">
+                    <span id="hours" class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest block">00</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider">Hours</span>
+                </div>
+                <div class="text-center border-r border-stone-100 last:border-0">
+                    <span id="minutes" class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest block">00</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider">Mins</span>
+                </div>
+                <div class="text-center">
+                    <span id="seconds" class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest block">00</span>
+                    <span class="text-[10px] text-gray-400 uppercase tracking-wider">Secs</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 7. 活動須知 (地圖前) ==================== -->
+        <section id="section-notice" class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-stone-100 p-8 md:p-12 text-center space-y-6 relative">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-50/10 via-transparent to-transparent pointer-events-none"></div>
+                <div class="max-w-xl mx-auto space-y-4 relative z-10">
+                    <span class="inline-block bg-amber-50 text-amber-800 text-xs px-3 py-1.5 rounded-full border border-amber-200/40 font-semibold tracking-wider">
+                        <i class="fa-solid fa-circle-exclamation mr-1 animate-pulse"></i> 敬請期待 • 11 月正式公布
+                    </span>
+                    <h3 class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest">活動重要須知</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">
+                        為了讓大家擁有最完美的參與體驗，我們正在細心整理當天的交通接駁指引、Dress Code（服裝穿搭建議）、新家落成居家注意事項等實用指南。<br>
+                        完整的「活動須知細則」將於 <b>2026年11月份</b> 在此正式公布！
+                    </p>
+                </div>
+                <!-- 視覺示意圖 placeholder -->
+                <div class="max-w-md mx-auto p-5 rounded-2xl border border-dashed border-stone-200 bg-stone-50/30 flex items-center justify-center space-x-3">
+                    <i class="fa-solid fa-clipboard-list text-stone-300 text-3xl"></i>
+                    <span class="text-xs text-stone-400 text-left">交通指引、穿搭風格、現場互動遊戲細節編排中...</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 8. 地點資訊 (Google Map 嵌入) ==================== -->
+        <section id="section-maps" class="max-w-4xl mx-auto px-4 space-y-12">
+            <div class="text-center space-y-2">
+                <span class="font-serif-elegant text-xs tracking-[0.2em] text-amber-700 uppercase block">Location &amp; Map</span>
+                <h3 class="font-serif-elegant text-2xl font-bold text-forest">活動地點指引</h3>
+            </div>
+
+            <!-- 家宴地點地圖 (李家新居) -->
+            <div id="map-family" class="hidden bg-white p-6 rounded-3xl shadow-lg border border-stone-100 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-stone-100">
+                    <div>
+                        <h4 class="text-lg font-bold text-stone-800"><i class="fa-solid fa-house-chimney text-amber-600 mr-2"></i>李家新居</h4>
+                        <p class="text-sm text-stone-500 mt-1">宜蘭縣壯圍鄉功勞村功勞路15號（輕藍民宿旁）</p>
+                    </div>
+                    <span class="mt-2 md:mt-0 inline-block bg-amber-50 text-amber-800 text-xs px-3 py-1 rounded-full border border-amber-200/50 font-semibold">
+                        家宴地點
+                    </span>
+                </div>
+                
+                <!-- Google Maps 嵌入 -->
+                <div class="aspect-video w-full rounded-2xl overflow-hidden border border-stone-200 shadow-inner">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1013.525040310205!2d121.79744121348574!3d24.76551060136828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-TW!2stw!4v1783237034349!5m2!1szh-TW!2stw" 
+                        class="w-full h-full border-0" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- 朋友派對地點地圖 (星野田園民宿) -->
+            <div id="map-party" class="hidden bg-white p-6 rounded-3xl shadow-lg border border-stone-100 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-stone-100">
+                    <div>
+                        <h4 class="text-lg font-bold text-stone-800"><i class="fa-solid fa-hotel text-emerald-600 mr-2"></i>宜蘭星野田園民宿</h4>
+                        <p class="text-sm text-stone-500 mt-1">宜蘭縣壯圍鄉美福二路80號</p>
+                    </div>
+                    <span class="mt-2 md:mt-0 inline-block bg-emerald-50 text-emerald-800 text-xs px-3 py-1 rounded-full border border-emerald-200/50 font-semibold">
+                        朋友派對地點
+                    </span>
+                </div>
+                
+                <!-- Google Maps 嵌入 -->
+                <div class="aspect-video w-full rounded-2xl overflow-hidden border border-stone-200 shadow-inner">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=%E5%AE%9C%E8%98%AD%E7%B8%A3%E5%A3%AF%E5%9C%8D%E9%84%89%E7%BE%8E%E7%A6%8F%E4%BA%8C%E8%B7%AF80%E8%99%9F&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        class="w-full h-full border-0" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 9. 活動流程 (地圖後) ==================== -->
+        <section id="section-timeline" class="max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-stone-100 p-8 md:p-12 text-center space-y-6 relative">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-50/10 via-transparent to-transparent pointer-events-none"></div>
+                <div class="max-w-xl mx-auto space-y-4 relative z-10">
+                    <span class="inline-block bg-emerald-50 text-emerald-800 text-xs px-3 py-1.5 rounded-full border border-emerald-200/40 font-semibold tracking-wider">
+                        <i class="fa-solid fa-timeline mr-1 animate-pulse"></i> 敬請期待 • 11 月正式公布
+                    </span>
+                    <h3 class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest">精心規劃活動流程</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">
+                        我們為大家規劃了最順暢、好玩的活動節奏！不論是家宴的溫馨剪綵與美食品嚐，或者是民宿派對的池畔BBQ、泳池遊戲、電動麻將與歡唱環節，都非常精彩。<br>
+                        最詳細的「活動流程時間表」將於 <b>2026年11月份</b> 在此頁面正式揭露！
+                    </p>
+                </div>
+                <!-- 視覺示意圖 placeholder -->
+                <div class="max-w-md mx-auto flex justify-between items-center px-4 py-3 bg-stone-50/50 rounded-2xl border border-stone-100 text-[11px] text-stone-400">
+                    <span>迎賓入場 ✦</span>
+                    <span class="text-stone-300">➔</span>
+                    <span>活動開場 ✦</span>
+                    <span class="text-stone-300">➔</span>
+                    <span>享用佳餚 ✦</span>
+                    <span class="text-stone-300">➔</span>
+                    <span>自由交流與合影</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== 10. 座位規劃 (家宴) (11月公布) ==================== -->
+        <section id="section-seating" class="hidden max-w-4xl mx-auto px-4">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden border border-stone-100 p-8 md:p-12 text-center space-y-6 relative">
+                <!-- 優雅的背景裝飾圖案 -->
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-50/20 via-transparent to-transparent pointer-events-none"></div>
+                
+                <div class="max-w-xl mx-auto space-y-4 relative z-10">
+                    <span class="inline-block bg-amber-50 text-amber-800 text-xs px-3 py-1.5 rounded-full border border-amber-200/40 font-semibold tracking-wider">
+                        <i class="fa-solid fa-clock-rotate-left mr-1"></i> 家宴限定 • 11 月正式公布
+                    </span>
+                    <h3 class="font-serif-elegant text-2xl md:text-3xl font-bold text-forest">新家宴席座位規劃</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">
+                        我們正在用心為每一位摯愛的家人朋友安排最舒適、溫馨的座位。<br>
+                        完整的座位桌次配置圖與引導，將於 <b>2026年11月份</b> 在此頁面正式公開，敬請期待！
+                    </p>
+                </div>
+
+                <!-- 座位示意圖高質感毛玻璃卡片 placeholder -->
+                <div class="max-w-2xl mx-auto aspect-video rounded-2xl border border-dashed border-stone-300 bg-stone-50/50 flex flex-col items-center justify-center relative overflow-hidden shadow-inner mt-8">
+                    <!-- 模擬座位圓桌的小裝飾，淡淡地顯示在背景 -->
+                    <div class="absolute inset-0 flex items-center justify-center opacity-10 space-x-12">
+                        <div class="w-32 h-32 rounded-full border-4 border-stone-400 flex items-center justify-center text-[10px] font-bold">主桌</div>
+                        <div class="w-24 h-24 rounded-full border-4 border-stone-400 flex items-center justify-center text-[10px] font-bold">男方親友</div>
+                        <div class="w-24 h-24 rounded-full border-4 border-stone-400 flex items-center justify-center text-[10px] font-bold">女方親友</div>
+                    </div>
+                    
+                    <!-- 毛玻璃覆蓋層 -->
+                    <div class="absolute inset-0 bg-white/40 backdrop-blur-[6px] flex flex-col items-center justify-center p-6 text-center space-y-3 z-10">
+                        <div class="w-14 h-14 rounded-full bg-white shadow-md flex items-center justify-center text-amber-600 border border-amber-100">
+                            <i class="fa-solid fa-chair text-xl animate-pulse"></i>
+                        </div>
+                        <h4 class="font-bold text-stone-800 text-sm tracking-wider">座位安排作業中</h4>
+                        <p class="text-[11px] text-stone-400 max-w-xs">
+                            我們將依據您填寫的 RSVP 出席人數與同行者，為您量身打造最佳席次。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==================== Lightbox 燈箱大圖檢視 Modal ==================== -->
+    <div id="lightbox-modal" class="fixed inset-0 bg-stone-900/95 z-[60] flex items-center justify-center p-4 hidden transition-opacity duration-300 opacity-0" onclick="closeLightbox()">
+        <button class="absolute top-6 right-6 text-white/80 hover:text-white transition text-3xl p-2 z-[70]" onclick="closeLightbox()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <!-- 🚀 加速優化：加入 loading="lazy" 避免一開始佔用頻寬 -->
+        <img id="lightbox-img" src="" loading="lazy" class="max-w-full max-h-[85vh] rounded-xl object-contain shadow-2xl transition-transform duration-300 scale-95" onclick="event.stopPropagation()">
+    </div>
+
+    <!-- ==================== RSVP 問卷彈出視窗 ==================== -->
+    <div id="rsvp-modal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-stone-100 flex flex-col">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-stone-100 flex justify-between items-center bg-stone-50 rounded-t-3xl">
+                <div>
+                    <h3 id="modal-title" class="font-serif-elegant text-xl font-bold text-forest">RSVP 席次意願統計</h3>
+                    <p id="modal-subtitle" class="text-xs text-stone-400 mt-1">填寫您的出席偏好</p>
+                </div>
+                <button onclick="closeRsvpModal()" class="text-stone-400 hover:text-stone-600 transition p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body / Form -->
+            <form id="rsvp-form" onsubmit="submitRsvp(event)" class="p-6 md:p-8 space-y-6">
+                <input type="hidden" id="form-event-type" name="eventType">
+
+                <!-- 名字 -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-stone-700">您的姓名 / 稱呼 <span class="text-red-500">*</span></label>
+                    <input type="text" id="rsvp-guest-name" name="name" required placeholder="請輸入您的真實姓名" 
+                        class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+                </div>
+
+                <!-- 出席意願狀態 -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-stone-700">出席意願 <span class="text-red-500">*</span></label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="border border-stone-200 rounded-xl p-3 flex items-center space-x-3 cursor-pointer hover:bg-amber-50/30 transition">
+                            <input type="radio" name="attending" value="yes" checked onchange="toggleAttendingForm(true)" class="text-amber-600 focus:ring-amber-500">
+                            <span class="text-sm font-medium text-stone-700" id="attending-yes-label">期待相見，準時出席！</span>
+                        </label>
+                        <label class="border border-stone-200 rounded-xl p-3 flex items-center space-x-3 cursor-pointer hover:bg-amber-50/30 transition">
+                            <input type="radio" name="attending" value="no" onchange="toggleAttendingForm(false)" class="text-amber-600 focus:ring-amber-500">
+                            <span class="text-sm font-medium text-stone-500" id="attending-no-label">殘念打烊，精神同在！</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 出席細節 -->
+                <div id="attending-details" class="space-y-6">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-stone-700">聯絡電話 <span class="text-red-500">*</span></label>
+                        <input type="tel" id="rsvp-guest-phone" name="phone" required placeholder="請輸入您的手機號碼" 
+                            class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+                    </div>
+
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-stone-700">電子郵件 Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="rsvp-guest-email" name="email" required placeholder="example@email.com" 
+                            class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+                        <p class="text-xs text-amber-700 font-semibold mt-1">
+                            <i class="fa-solid fa-envelope-open mr-1 animate-bounce"></i> ⚠️ 11月會發送詳細資訊，請留意信箱
+                        </p>
+                    </div>
+
+                    <div id="form-group-guests" class="space-y-2">
+                        <label class="block text-sm font-semibold text-stone-700">出席人數 <span class="text-red-500">*</span></label>
+                        <select id="rsvp-guests" name="guests" onchange="handleGuestsChange()" class="w-full px-4 py-3 rounded-xl border border-stone-200/50 bg-white">
+                            <option value="1">1 位 (僅自己出席)</option>
+                            <option value="2">2 位</option>
+                            <option value="3">3 位</option>
+                            <option value="4">4 位</option>
+                        </select>
+                    </div>
+
+                    <div id="form-group-other-names" class="space-y-2 hidden">
+                        <label class="block text-sm font-semibold text-stone-700">其他人的姓名 <span class="text-red-500">*</span></label>
+                        <input type="text" id="rsvp-other-names" name="otherNames" placeholder="格式範例：王小明、陳小美、張小帥" 
+                            class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50">
+                        <p class="text-[11px] text-stone-400">請填寫其餘同行的家屬或伴侶姓名，並以頓號（、）做區隔。</p>
+                    </div>
+
+                    <div id="form-group-diet" class="space-y-2">
+                        <label class="block text-sm font-semibold text-stone-700">飲食習慣（可複選）</label>
+                        <div class="grid grid-cols-3 gap-2 text-sm text-stone-600">
+                            <label class="flex items-center space-x-2 bg-stone-50 p-2.5 rounded-xl border border-stone-200/50 cursor-pointer hover:bg-stone-100 transition">
+                                <input type="checkbox" name="diet" value="五辛素" class="rounded text-amber-600">
+                                <span>五辛素</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-stone-50 p-2.5 rounded-xl border border-stone-200/50 cursor-pointer hover:bg-stone-100 transition">
+                                <input type="checkbox" name="diet" value="全素" class="rounded text-amber-600">
+                                <span>全素</span>
+                            </label>
+                            <label class="flex items-center space-x-2 bg-stone-50 p-2.5 rounded-xl border border-stone-200/50 cursor-pointer hover:bg-stone-100 transition">
+                                <input type="checkbox" name="diet" value="蛋奶素" class="rounded text-amber-600">
+                                <span>蛋奶素</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div id="form-group-driving" class="space-y-2 hidden">
+                        <label class="block text-sm font-semibold text-stone-700">有無開車 <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-2 gap-3">
+                            <label class="border border-stone-200 rounded-xl p-3 flex items-center space-x-3 cursor-pointer hover:bg-amber-50/30 transition">
+                                <input type="radio" name="driving" value="有" checked class="text-amber-600 focus:ring-amber-500">
+                                <span class="text-sm font-medium text-stone-700">有開車 (需車位)</span>
+                            </label>
+                            <label class="border border-stone-200 rounded-xl p-3 flex items-center space-x-3 cursor-pointer hover:bg-amber-50/30 transition">
+                                <input type="radio" name="driving" value="無" class="text-amber-600 focus:ring-amber-500">
+                                <span class="text-sm font-medium text-stone-500">無開車</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-stone-700">有什麼話想說，歡迎在此留言</label>
+                    <textarea name="blessing" rows="3" placeholder="" 
+                        class="w-full px-4 py-3 rounded-xl border border-stone-200 focus:outline-none focus:ring-2 focus:ring-amber-500/50"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-forest text-white py-4 rounded-xl font-semibold shadow-md hover:bg-forest/95 transition duration-300">
+                    確認送出回覆
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 成功彈出視窗 -->
+    <div id="success-modal" class="fixed inset-0 bg-stone-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-8 text-center space-y-4 shadow-2xl border border-stone-100">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-50 text-emerald-500 mb-2">
+                <i class="fa-solid fa-circle-check text-3xl"></i>
+            </div>
+            <h3 class="font-serif-elegant text-2xl font-bold text-stone-800">回覆送出成功！</h3>
+            <p class="text-sm text-stone-500">感謝您的填寫。我們已經收到您的心意，並會悉心為您安排座席與餐飲，非常期待當天與您見面！</p>
+            <button onclick="closeSuccessModal()" class="w-full bg-forest text-white py-3 rounded-xl font-semibold hover:bg-forest/95 transition">
+                關閉視窗
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-forest text-stone-300 py-16 px-4 text-center mt-20 relative">
+        <div class="max-w-2xl mx-auto space-y-6">
+            <h2 class="font-serif-elegant text-3xl text-white tracking-widest">Willy &amp; Lamis</h2>
+            <p class="text-sm text-stone-400 font-light max-w-sm mx-auto leading-relaxed">
+                在這條攜手共度的路上，期待有你們這些最重要的夥伴相伴，在壯圍星野民宿與我們的新家共創美好回憶。
+            </p>
+            <div class="w-12 h-[1px] bg-stone-700 mx-auto"></div>
+            <p class="text-[10px] text-stone-500 uppercase tracking-widest">© 2026 Willy &amp; Lamis. Made with Love.</p>
+        </div>
+    </footer>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
 
     <!-- 🚀 加速優化：預載入首頁滿版背景圖 -->
     <link rel="preload" as="image" href="wl_47.webp">
