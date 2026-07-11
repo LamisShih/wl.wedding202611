@@ -13,7 +13,190 @@ body {
 /* 金色光澤與漸層效果 */
 .gold-gradient-text {
     background: linear-gradient(135deg, #b89742 0%, #d4af37 50%, #f3e5ab 100%);
+    background-clip: text;/* ==================== style.css 完整修復版 ==================== */
+body {
+    font-family: 'Inter', 'Noto Serif TC', serif;
+    background-color: #faf8f5;
+    color: #2c2a29;
+    scroll-behavior: smooth;
+}
+
+.font-serif-elegant {
+    font-family: 'Cinzel', 'Noto Serif TC', serif;
+}
+
+/* 金色光澤與漸層效果 */
+.gold-gradient-text {
+    background: linear-gradient(135deg, #b89742 0%, #d4af37 50%, #f3e5ab 100%);
     background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+    background: linear-gradient(135deg, #b89742 0%, #d4af37 100%);
+}
+
+.bg-forest {
+    background-color: #1a3020;
+}
+
+.text-forest {
+    color: #1a3020;
+}
+
+.border-forest {
+    border-color: #1a3020; 
+}
+
+/* 彈幕移動動畫 - 起點與終點設定（100vw 全螢幕最右滑至最左） */
+@keyframes danmaku-move {
+    from { transform: translateX(100vw); } 
+    to { transform: translateX(-100%); }   
+}
+
+/* 彈幕基礎外觀泡泡（重要：之前在 html 分離時漏掉了這一段） */
+.danmaku-bubble {
+    position: absolute;
+    white-space: nowrap;
+    will-change: transform;
+    animation: danmaku-move linear forwards;
+    padding: 8px 18px;
+    border-radius: 9999px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    color: #2c2a29;
+    backdrop-filter: blur(4px);
+    z-index: 30;
+}
+
+/* 親友在場中點擊送出的加亮黃金彈幕 */
+.danmaku-bubble-custom {
+    background: linear-gradient(135deg, rgba(26, 48, 32, 0.95) 0%, rgba(44, 76, 52, 0.95) 100%);
+    color: #f3e5ab;
+    border: 1.5px solid #d4af37;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(184, 151, 66, 0.45);
+}
+
+.shake-animation {
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* ... existing code ... */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+}
+
+/* ==================== 提取出的共用精簡樣式 ==================== */
+/* 1. 共用輸入框 (Input / Select / Textarea) */
+.custom-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    border: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.custom-input:focus {
+    border-color: rgba(245, 158, 11, 0.5);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3);
+}
+
+/* 2. 共用綠色主按鈕 */
+.custom-btn {
+    width: 100%;
+    background-color: #1a3020;
+    color: #ffffff;
+    padding: 0.875rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.custom-btn:hover {
+    background-color: rgba(26, 48, 32, 0.95);
+    transform: translateY(-2px);
+}
+.custom-btn:disabled {
+    background-color: #d6d3d1;
+    color: #78716c;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 3. 共用選項卡片 (Radio / Checkbox) */
+.custom-option-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.custom-option-card:hover {
+    background-color: rgba(254, 243, 199, 0.3);
+}
+/* ==================== 5張照片專屬客製化排版 ==================== */
+.gallery-5-layout {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* 📱 手機版佈局 (1大圖 + 4小圖) */
+@media (max-width: 767px) {
+    .gallery-5-layout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery-5-layout .gallery-item:nth-child(1) {
+        grid-column: span 2; /* 第一張佔據整行 */
+        aspect-ratio: 16 / 9;
+    }
+    .gallery-5-layout .gallery-item:nth-child(n+2) {
+        grid-column: span 1; /* 其餘四張呈現 2x2 方塊 */
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* 💻 電腦版佈局 (2大圖 + 3小圖) */
+@media (min-width: 768px) {
+    .gallery-5-layout {
+        /* 將網格分成 6 等份，方便切出 1/2 與 1/3 的比例 */
+        grid-template-columns: repeat(6, 1fr); 
+    }
+    .gallery-5-layout .gallery-item:nth-child(1),
+    .gallery-5-layout .gallery-item:nth-child(2) {
+        grid-column: span 3; /* 前兩張各佔 3/6 (也就是一半) */
+        aspect-ratio: 4 / 3;
+    }
+    .gallery-5-layout .gallery-item:nth-child(3),
+    .gallery-5-layout .gallery-item:nth-child(4),
+    .gallery-5-layout .gallery-item:nth-child(5) {
+        grid-column: span 2; /* 後三張各佔 2/6 (也就是三分之一) */
+        aspect-ratio: 1 / 1;
+    }
+};
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
