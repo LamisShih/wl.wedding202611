@@ -4,7 +4,7 @@ import { startDanmakuEngine, spawnDanmaku } from './danmaku.js';
 import { preloadGalleryImages, renderGallery } from './gallery.js';
 import { openLightbox, closeLightbox, showPrevImage, showNextImage } from './lightbox.js';
 import { unlockInvitation, initManualUnlock } from './invitation.js';
-import { handleGuestsChange, checkSubmissionStatus, openRsvpModal, closeRsvpModal, toggleAttendingForm, closeSuccessModal } from './rsvp.js?v=2';
+import { handleGuestsChange, checkSubmissionStatus, openRsvpModal, closeRsvpModal, toggleAttendingForm, closeSuccessModal } from './rsvp_v2.js';
 
 // ==================== 全域變數定義 ====================
 const LOCAL_INVITE_LIST = { "family": "family", "party": "party", "all": "all" };
