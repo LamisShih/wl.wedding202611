@@ -22,6 +22,29 @@
     
     <!-- 引入外部 CSS -->
     <link rel="stylesheet" href="style.css?v=2">
+
+    <style>
+        .gallery-5-layout {
+            display: grid;
+            gap: 1rem;
+            width: 100%;
+        }
+        @media (max-width: 767px) {
+            .gallery-5-layout { grid-template-columns: repeat(2, 1fr); }
+            .gallery-5-layout .gallery-item:nth-child(1) { grid-column: span 2; aspect-ratio: 16 / 9; }
+            .gallery-5-layout .gallery-item:nth-child(n+2) { grid-column: span 1; aspect-ratio: 1 / 1; }
+        }
+        @media (min-width: 768px) {
+            .gallery-5-layout { grid-template-columns: repeat(6, 1fr); }
+            .gallery-5-layout .gallery-item:nth-child(1),
+            .gallery-5-layout .gallery-item:nth-child(2) { grid-column: span 3; aspect-ratio: 4 / 3; }
+            .gallery-5-layout .gallery-item:nth-child(3),
+            .gallery-5-layout .gallery-item:nth-child(4),
+            .gallery-5-layout .gallery-item:nth-child(5) { grid-column: span 2; aspect-ratio: 1 / 1; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
 </head>
 <body class="overflow-x-hidden">
 
