@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             alreadySubmittedNames = data.names || [];
             if (data.inviteList && Object.keys(data.inviteList).length > 0) INVITE_LIST = data.inviteList;
             if (unlockedGuestName) checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames);
-            if (data.blessings && data.blessings.length > 0) activeBlessings = [...DEFAULT_BLESSINGS, ...data.blessings];
+            if (data.blessings && data.blessings.length > 0) activeBlessings.push(...data.blessings);
         }
 
         for (let i = 0; i < Math.min(3, activeBlessings.length); i++) {
