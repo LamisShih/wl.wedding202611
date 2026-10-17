@@ -1,22 +1,6 @@
-/* ==================== style.css 完整修復版 ==================== */
 body {
     font-family: 'Inter', 'Noto Serif TC', serif;
-    background-color: #faf8f5;
-    color: #2c2a29;
-    scroll-behavior: smooth;
-}
-
-.font-serif-elegant {
-    font-family: 'Cinzel', 'Noto Serif TC', serif;
-}
-
-/* 金色光澤與漸層效果 */
-.gold-gradient-text {
-    background: linear-gradient(135deg, #b89742 0%, #d4af37 50%, #f3e5ab 100%);
-    background-clip: text;/* ==================== style.css 完整修復版 ==================== */
-body {
-    font-family: 'Inter', 'Noto Serif TC', serif;
-    background-color: #faf8f5;
+    background-color: #faf9f5;
     color: #2c2a29;
     scroll-behavior: smooth;
 }
@@ -38,24 +22,53 @@ body {
 }
 
 .bg-forest {
-    background-color: #1a3020;
+    background-color: #2d3831;
 }
 
 .text-forest {
-    color: #1a3020;
+    color: #2d3831;
 }
 
 .border-forest {
-    border-color: #1a3020; 
+    border-color: #2d3831; 
 }
 
-/* 彈幕移動動畫 - 起點與終點設定（100vw 全螢幕最右滑至最左） */
+/* STREAMING_CHUNK:Styling Zelda switch totems with generous inner padding... */
+/* 👑 王國之淚 OLED 特仕版風格圖框 (保留舒適內距) */
+.zelda-switch-card {
+    position: relative;
+    background-color: #faf9f5; /* 框底色：米白色 */
+    border: 1.5px solid #b89742; /* 金銅色邊框 */
+    box-shadow: 0 10px 30px rgba(184, 151, 66, 0.2), 0 0 15px rgba(212, 175, 55, 0.25); /* 純金光暈 */
+    overflow: hidden;
+    padding-top: 2.75rem !important;   /* 確保頂部花邊與內部文字保持安全距離 */
+    padding-bottom: 2.75rem !important; /* 確保底部花邊與內部文字保持安全距離 */
+}
+
+/* 上下左納烏精緻迷宮圖騰邊緣 (金銅色 + 金色光暈) */
+.zelda-switch-card::before, 
+.zelda-switch-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 24px;
+    background-image: url("data:image/svg+xml,%3Csvg width='80' height='24' viewBox='0 0 80 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23b89742' stroke-width='2' fill='none' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpath d='M-2,3 H6 V11 H14 V3 H26 V15 H34 V3 H46 V11 H54 V3 H66 V15 H74 V3 H82' /%3E%3Cpath d='M2,15 H10 V23 H18 V11 H22' /%3E%3Cpath d='M22,23 H30 V11' /%3E%3Cpath d='M38,15 V23 H50 V15 H58 V23 H70 V11 H82' /%3E%3Cpath d='M38,7 V15' /%3E%3Cpath d='M62,7 V15' /%3E%3Cpath d='M18,7 h4' /%3E%3Cpath d='M58,7 h4' /%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    opacity: 0.95;
+    z-index: 10;
+    pointer-events: none;
+    filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.5)); /* 純金色微光效果 */
+}
+.zelda-switch-card::before { top: 0; }
+.zelda-switch-card::after { bottom: 0; transform: rotate(180deg); }
+
+/* STREAMING_CHUNK:Styling animations and utilities... */
 @keyframes danmaku-move {
     from { transform: translateX(100vw); } 
     to { transform: translateX(-100%); }   
 }
 
-/* 彈幕基礎外觀泡泡（重要：之前在 html 分離時漏掉了這一段） */
 .danmaku-bubble {
     position: absolute;
     white-space: nowrap;
@@ -73,9 +86,8 @@ body {
     z-index: 30;
 }
 
-/* 親友在場中點擊送出的加亮黃金彈幕 */
 .danmaku-bubble-custom {
-    background: linear-gradient(135deg, rgba(26, 48, 32, 0.95) 0%, rgba(44, 76, 52, 0.95) 100%);
+    background: linear-gradient(135deg, rgba(45, 56, 49, 0.95) 0%, rgba(68, 87, 75, 0.95) 100%);
     color: #f3e5ab;
     border: 1.5px solid #d4af37;
     font-weight: 600;
@@ -92,15 +104,6 @@ body {
     75% { transform: translateX(6px); }
 }
 
-/* ... existing code ... */
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
-}
-
-/* ==================== 提取出的共用精簡樣式 ==================== */
-/* 1. 共用輸入框 (Input / Select / Textarea) */
 .custom-input {
     width: 100%;
     padding: 0.75rem 1rem;
@@ -115,10 +118,9 @@ body {
     box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.3);
 }
 
-/* 2. 共用綠色主按鈕 */
 .custom-btn {
     width: 100%;
-    background-color: #1a3020;
+    background-color: #2d3831;
     color: #ffffff;
     padding: 0.875rem 1rem;
     border-radius: 0.75rem;
@@ -131,7 +133,7 @@ body {
     cursor: pointer;
 }
 .custom-btn:hover {
-    background-color: rgba(26, 48, 32, 0.95);
+    background-color: rgba(45, 56, 49, 0.95);
     transform: translateY(-2px);
 }
 .custom-btn:disabled {
@@ -142,120 +144,39 @@ body {
     box-shadow: none;
 }
 
-/* 3. 共用選項卡片 (Radio / Checkbox) */
-.custom-option-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    padding: 0.75rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-.custom-option-card:hover {
-    background-color: rgba(254, 243, 199, 0.3);
-}
-/* ==================== 5張照片專屬客製化排版 ==================== */
 .gallery-5-layout {
     display: grid;
     gap: 1rem;
     width: 100%;
 }
 
-/* 📱 手機版佈局 (1大圖 + 4小圖) */
 @media (max-width: 767px) {
     .gallery-5-layout {
         grid-template-columns: repeat(2, 1fr);
     }
     .gallery-5-layout .gallery-item:nth-child(1) {
-        grid-column: span 2; /* 第一張佔據整行 */
+        grid-column: span 2; 
         aspect-ratio: 16 / 9;
     }
     .gallery-5-layout .gallery-item:nth-child(n+2) {
-        grid-column: span 1; /* 其餘四張呈現 2x2 方塊 */
+        grid-column: span 1; 
         aspect-ratio: 1 / 1;
     }
 }
 
-/* 💻 電腦版佈局 (2大圖 + 3小圖) */
 @media (min-width: 768px) {
     .gallery-5-layout {
-        /* 將網格分成 6 等份，方便切出 1/2 與 1/3 的比例 */
         grid-template-columns: repeat(6, 1fr); 
     }
     .gallery-5-layout .gallery-item:nth-child(1),
     .gallery-5-layout .gallery-item:nth-child(2) {
-        grid-column: span 3; /* 前兩張各佔 3/6 (也就是一半) */
+        grid-column: span 3;
         aspect-ratio: 4 / 3;
     }
     .gallery-5-layout .gallery-item:nth-child(3),
     .gallery-5-layout .gallery-item:nth-child(4),
     .gallery-5-layout .gallery-item:nth-child(5) {
-        grid-column: span 2; /* 後三張各佔 2/6 (也就是三分之一) */
+        grid-column: span 2; 
         aspect-ratio: 1 / 1;
     }
-};
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.bg-gold-gradient {
-    background: linear-gradient(135deg, #b89742 0%, #d4af37 100%);
-}
-
-.bg-forest {
-    background-color: #1a3020;
-}
-
-.text-forest {
-    color: #1a3020;
-}
-
-.border-forest {
-    border-color: #1a3020; 
-}
-
-/* 彈幕移動動畫 - 起點與終點設定（100vw 全螢幕最右滑至最左） */
-@keyframes danmaku-move {
-    from { transform: translateX(100vw); } 
-    to { transform: translateX(-100%); }   
-}
-
-/* 彈幕基礎外觀泡泡（重要：之前在 html 分離時漏掉了這一段） */
-.danmaku-bubble {
-    position: absolute;
-    white-space: nowrap;
-    will-change: transform;
-    animation: danmaku-move linear forwards;
-    padding: 8px 18px;
-    border-radius: 9999px;
-    font-size: 14px;
-    font-weight: 500;
-    background-color: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    color: #2c2a29;
-    backdrop-filter: blur(4px);
-    z-index: 30;
-}
-
-/* 親友在場中點擊送出的加亮黃金彈幕 */
-.danmaku-bubble-custom {
-    background: linear-gradient(135deg, rgba(26, 48, 32, 0.95) 0%, rgba(44, 76, 52, 0.95) 100%);
-    color: #f3e5ab;
-    border: 1.5px solid #d4af37;
-    font-weight: 600;
-    box-shadow: 0 4px 20px rgba(184, 151, 66, 0.45);
-}
-
-.shake-animation {
-    animation: shake 0.5s ease-in-out;
-}
-
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
 }
