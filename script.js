@@ -10,8 +10,9 @@ import { handleGuestsChange, checkSubmissionStatus, openRsvpModal, closeRsvpModa
 const LOCAL_INVITE_LIST = { "family": "family", "party": "party", "all": "all" };
 let INVITE_LIST = { ...LOCAL_INVITE_LIST };
 
-let activeBlessings = []; // 🚀 1. 已去除預設祝福，改為純粹抓取雲端資料
+let activeBlessings = []; // 已去除預設祝福，改為純粹抓取雲端資料
 let unlockedGuestName = "";
+let unlockedGuestRole = "party"; // 🚀 新增：用來記錄目前解鎖賓客的類別 ('family' | 'party' | 'all')
 let alreadySubmittedNames = [];
 
 // ==================== 倒數計時引擎 ====================
@@ -52,10 +53,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             alreadySubmittedNames = data.names || [];
             if (data.inviteList && Object.keys(data.inviteList).length > 0) INVITE_LIST = data.inviteList;
-            if (unlockedGuestName) checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames);
+            
+            // 🚀 傳入正確的賓客類別 unlockedGuestRole
+            if (unlockedGuestName) checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames, unlockedGuestRole);
         }
 
-        // 🚀 3. 畫面一載入時，若有雲端資料則至少派發 6 條避免畫面太空
+        // 畫面一載入時，若有雲端資料則至少派發 6 條避免畫面太空
         const initialCount = Math.max(6, activeBlessings.length > 0 ? Math.min(6, activeBlessings.length) : 0);
         for (let i = 0; i < initialCount; i++) {
             setTimeout(() => {
@@ -72,12 +75,37 @@ document.addEventListener("DOMContentLoaded", () => {
     if (passParam) {
         const decodedPass = decodeURIComponent(passParam).trim();
         const match = findMatchedRoleAndName(decodedPass, INVITE_LIST);
-        if (match.role) unlockInvitation(match.role, match.name, (n) => unlockedGuestName = n, () => checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames));
+        if (match.role) {
+            unlockedGuestRole = match.role; // 🚀 保存解鎖到的角色
+            unlockInvitation(
+                match.role, 
+                match.name, 
+                (n) => unlockedGuestName = n, 
+                () => checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames, unlockedGuestRole) // 🚀 帶入賓客類別
+            );
+        }
     }
 });
 
 // ==================== 全域事件綁定 ====================
-window.handleManualUnlock = () => initManualUnlock(INVITE_LIST, (n) => unlockedGuestName = n, () => checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames));
+// 🚀 手動輸入姓名解鎖時，捕獲 role 並傳送至 checkSubmissionStatus
+window.handleManualUnlock = () => {
+    const passInput = document.getElementById("passcode-input");
+    const val = passInput ? passInput.value.trim() : "";
+    if (val) {
+        const match = findMatchedRoleAndName(val, INVITE_LIST);
+        if (match.role) {
+            unlockedGuestRole = match.role; // 🚀 記錄賓客類別 ('family' | 'party' | 'all')
+        }
+    }
+
+    initManualUnlock(
+        INVITE_LIST, 
+        (n) => unlockedGuestName = n, 
+        () => checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames, unlockedGuestRole) // 🚀 帶入賓客類別
+    );
+};
+
 window.openRsvpModal = (type) => openRsvpModal(type, unlockedGuestName);
 window.closeRsvpModal = closeRsvpModal;
 window.toggleAttendingForm = toggleAttendingForm;
@@ -97,7 +125,7 @@ window.submitBlessing = async (e) => {
     // 🛡️ 防呆：確保不是空白才送出
     if (!text || text.trim() === "") return;
 
-    // 2. 即時手動發送的格式帶有名字與內容（danmaku.js 會自動加上星星裝飾）
+    // 即時手動發送的格式帶有名字與內容
     const rawContent = `${sender}: ${text}`;
     
     spawnDanmaku(rawContent, true);
@@ -155,7 +183,7 @@ window.submitRsvp = async (e) => {
         await sendPostRequest(submission);
         localStorage.setItem("rsvp_submitted_" + normalizedName, "true");
         alreadySubmittedNames.push(guestName);
-        checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames);
+        checkSubmissionStatus(unlockedGuestName, alreadySubmittedNames, unlockedGuestRole); // 🚀 帶入賓客類別
         closeRsvpModal();
         document.getElementById('success-modal').classList.remove('hidden');
     } catch (error) {
