@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- 引入外部 CSS -->
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=9">
 
     <style>
         .gallery-5-layout {
@@ -155,9 +157,8 @@
             </div>
         </div>
         
-        <!-- ==================== 5. 活動資訊 ==================== -->
-        <div id="section-events" class="space-y-12">
-            <!-- 【家宴賓客區塊】(僅顯示取消通知，無活動細節) -->
+        <!-- ==================== 5. 家宴場 (僅家宴賓客可見，顯示取消訊息) ==================== -->
+        <div id="section-events">
             <section id="section-family" class="hidden px-4 max-w-4xl mx-auto">
                 <div class="zelda-switch-card rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row transition-all duration-500 hover:shadow-2xl">
                     <div class="md:w-5/12 bg-amber-50/50 p-8 flex flex-col justify-between relative overflow-hidden min-h-[320px]">
@@ -207,74 +208,10 @@
                     </div>
                 </div>
             </section>
-
-            <!-- 【朋友 Party 版區塊】 -->
-            <section id="section-party" class="hidden px-4 max-w-4xl mx-auto">
-                <div class="zelda-switch-card rounded-3xl shadow-xl overflow-hidden flex flex-col md:flex-row-reverse transition-all duration-500 hover:shadow-2xl">
-                    <div class="md:w-5/12 bg-amber-50/50 p-8 flex flex-col justify-between relative overflow-hidden min-h-[320px]">
-                        <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('https://placehold.co/600x800/e6dfd5/ffffff?text=Party');"></div>
-                        <div class="z-10">
-                            <h3 class="font-serif-elegant text-3xl font-bold text-[#2c2a29] leading-snug">派對場 ✦ 石在有李</h3>
-                            <p class="text-xs text-stone-400 mt-2 tracking-widest">FRIENDS VILLA PARTY</p>
-                        </div>
-                        
-                        <div class="z-10 space-y-4 pt-8 border-t border-stone-200/60">
-                            <div class="flex items-start space-x-3">
-                                <i class="fa-solid fa-calendar-days text-[#967325] mt-1"></i>
-                                <div>
-                                    <p class="text-xs text-stone-400 font-semibold uppercase">日期與時間</p>
-                                    <p class="text-sm font-semibold text-stone-700">11/21 週六 下午</p>
-                                    <p class="text-xs text-stone-500 mt-0.5">16:00 可入場 ✦ 16:30 正式開始<br>(預計 20:00 結束散場)</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <i class="fa-solid fa-hotel text-[#967325] mt-1"></i>
-                                <div>
-                                    <p class="text-xs text-stone-400 font-semibold uppercase">舉辦地點</p>
-                                    <p class="text-sm font-semibold text-stone-700">海吉兒民宿</p>
-                                    <p class="text-xs text-stone-500 mt-0.5">宜蘭縣頭城鎮外澳里濱海路二段1巷11號</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="md:w-7/12 p-8 md:p-12 flex flex-col justify-between relative z-10">
-                        <div class="space-y-6">
-                            <div class="flex items-center space-x-2 text-[#967325]">
-                                <span class="h-[1px] w-8 bg-[#b89742]/50"></span>
-                                <span class="text-xs tracking-widest uppercase">親愛的摯友們</span>
-                            </div>
-                            <h4 class="text-2xl font-bold text-[#2c2a29] font-serif-elegant">抵達森林營地 ✦ 準備好與我們同樂了嗎？</h4>
-                            <p class="text-[#5c554b] text-sm leading-relaxed">
-                                各位兄弟姐妹們，我們要辦婚禮派對啦！<br>
-                                派對如期進行，<span class="font-bold text-amber-800 bg-amber-100/80 px-2 py-0.5 rounded border border-amber-300 inline-block my-1"><i class="fa-solid fa-triangle-exclamation mr-1 text-amber-700"></i>特別注意：地點改為「宜蘭頭城 海吉兒民宿」</span>，現場備有<b>遮棚烤肉區、KTV 歡唱，</b>還有我們精心準備的<b>趣味遊戲與驚心動魄的環節，</b>期待在這歡樂的氣氛中，與大家一起分享喜悅！🍻<br><br>
-                                <span class="font-semibold text-[#967325]"><i class="fa-solid fa-shirt mr-1"></i> Dress Code 裝備要求：</span><br>
-                                森林系服飾（大地色系、綠色系、花草元素）
-                            </p>
-                            
-                            <div class="mt-2 text-xs text-stone-600 bg-amber-50/80 p-3.5 rounded-xl border border-amber-200/80 shadow-sm">
-                                <div class="font-bold text-amber-800 mb-1 flex items-center">
-                                    <i class="fa-solid fa-location-dot mr-1.5 text-amber-700"></i> 地點更換強烈提醒：
-                                </div>
-                                本次活動舉辦地點位於<b>宜蘭縣頭城鎮「海吉兒民宿」</b>，請務必確認交通路線：
-                                <a href="https://www.google.com/maps/search/?api=1&query=海吉兒民宿" target="_blank" rel="noopener noreferrer" class="text-[#967325] hover:underline inline-flex items-center font-bold ml-1">
-                                    開啟 Google 地圖導航 <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="pt-8">
-                            <button id="btn-party-rsvp" disabled class="w-full bg-stone-200 text-stone-500 text-center py-3.5 rounded-xl font-semibold shadow-inner cursor-not-allowed transition duration-300">
-                                讀取報名狀態中...
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </div>
 
         <!-- ==================== 6. 倒數計時 (僅派對場可見) ==================== -->
-        <section id="countdown-section" class="py-12 px-4 max-w-xl mx-auto text-center space-y-4">
+        <section id="countdown-section" class="hidden py-12 px-4 max-w-xl mx-auto text-center space-y-4">
             <div class="w-12 h-[1px] bg-amber-600/30 mx-auto mb-6"></div>
             <span class="font-serif-elegant text-xs tracking-[0.2em] text-amber-700 uppercase block">Countdown to Our Special Day</span>
             <h4 class="font-serif-elegant text-xl font-bold text-forest">期待與您相見的時刻</h4>
@@ -298,20 +235,47 @@
             </div>
         </section>
 
-        <!-- ==================== 7. 活動須知 (僅派對場可見) ==================== -->
-        <section id="section-notice" class="max-w-4xl mx-auto px-4">
-            <div class="zelda-switch-card rounded-3xl shadow-xl overflow-hidden p-10 md:p-14 space-y-8 relative">
+        <!-- ==================== 7. 活動重要須知 & 報名狀態 (僅派對場可見) ==================== -->
+        <section id="section-notice" class="hidden max-w-4xl mx-auto px-4">
+            <div class="zelda-switch-card rounded-3xl shadow-xl overflow-hidden p-8 md:p-12 space-y-8 relative">
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-50/10 via-transparent to-transparent pointer-events-none"></div>
-                <div class="max-w-xl mx-auto text-center space-y-4 relative z-10">
+                
+                <div class="max-w-xl mx-auto text-center space-y-3 relative z-10">
                     <span class="inline-block bg-[#b89742]/10 text-[#967325] text-xs px-3.5 py-1.5 rounded-full border border-[#b89742]/40 font-semibold tracking-wider">
-                        <i class="fa-solid fa-scroll mr-1"></i> 冒險指南
+                        <i class="fa-solid fa-scroll mr-1"></i> 派對冒險指南
                     </span>
-                    <h3 class="font-serif-elegant text-2xl md:text-3xl font-bold text-[#2c2a29]">活動重要須知</h3>
-                    <p class="text-sm text-[#5c554b] leading-relaxed">
-                        為了讓大家擁有最完美的祭典體驗，請各位旅人詳讀以下裝備與補給指南！
+                    <h3 class="font-serif-elegant text-2xl md:text-3xl font-bold text-[#2c2a29]">派對場 ✦ 活動重要須知</h3>
+                    <p class="text-sm font-semibold text-[#967325]">
+                        <i class="fa-solid fa-calendar-check mr-1"></i> 活動時間：2026/11/21 (六) 下午 16:00 入場 ✦ 16:30 開始
                     </p>
                 </div>
+
+                <!-- 報名狀態提示區塊 -->
+                <div id="rsvp-status-box" class="max-w-2xl mx-auto relative z-10">
+                    <div id="rsvp-status-submitted" class="hidden bg-emerald-50/90 border border-emerald-300 p-4 rounded-2xl flex items-center space-x-3 text-emerald-900 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center shrink-0 font-bold">
+                            <i class="fa-solid fa-check text-lg"></i>
+                        </div>
+                        <div class="text-sm">
+                            <p class="font-bold">✅ 專屬席位已成功預約！</p>
+                            <p class="text-xs text-emerald-700 mt-0.5">系統已確認您的出席狀態，11/21 (六) 期待與您在海吉兒營地相見！</p>
+                        </div>
+                    </div>
+
+                    <div id="rsvp-status-unsubmitted" class="hidden bg-amber-50/90 border border-amber-300 p-5 rounded-2xl flex items-start space-x-3 text-amber-950 shadow-sm">
+                        <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center shrink-0 font-bold mt-0.5">
+                            <i class="fa-solid fa-circle-exclamation text-lg"></i>
+                        </div>
+                        <div class="text-sm space-y-1">
+                            <p class="font-bold text-amber-900">⚠️ 尚未檢測到您的報名紀錄</p>
+                            <p class="text-xs text-amber-800 leading-relaxed">
+                                若您欲參加派對，<b>請儘速直接傳訊息給新郎或新娘（LINE 或 IG 均可）</b>通知我們，以確保有為您統計人數並安排餐點與精美禮品！
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 
+                <!-- 冒險指南四大重點格卡 -->
                 <div class="max-w-2xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
                     <div class="flex items-start space-x-4 bg-white/60 p-5 rounded-2xl border border-[#b89742]/20">
                         <div class="mt-1 w-8 h-8 rounded-full bg-[#b89742]/10 text-[#967325] flex items-center justify-center shrink-0"><i class="fa-solid fa-shirt"></i></div>
@@ -319,8 +283,8 @@
                             <h5 class="font-bold text-[#2c2a29] text-sm mb-1">裝備要求 (Dress Code)</h5>
                             <p class="text-xs text-[#5c554b] leading-relaxed">
                                 歡迎穿著森林系服飾（大地色系、綠色系、花草元素）！<br>
-                                <span class="text-amber-800 font-semibold block mt-1">
-                                    <i class="fa-solid fa-circle-exclamation mr-1 text-amber-600"></i>注意事項：因場地分為室內與室外，室內場地不得穿鞋進入。現場雖會提供鞋套，但若覺得不便，建議穿著方便脫換的鞋子前來。
+                                <span class="text-amber-800 font-semibold block mt-1.5 bg-amber-50/80 p-2 rounded-lg border border-amber-200/60">
+                                    <i class="fa-solid fa-circle-info mr-1 text-amber-600"></i>注意事項：因場地分為室內與室外，室內場地不得穿鞋進入。現場雖會提供鞋套，但若覺得不便，建議穿著方便脫換的鞋子前來。
                                 </span>
                             </p>
                         </div>
@@ -328,9 +292,9 @@
                     <div class="flex items-start space-x-4 bg-white/60 p-5 rounded-2xl border border-[#b89742]/20">
                         <div class="mt-1 w-8 h-8 rounded-full bg-[#b89742]/10 text-[#967325] flex items-center justify-center shrink-0"><i class="fa-solid fa-map-pin"></i></div>
                         <div>
-                            <h5 class="font-bold text-[#2c2a29] text-sm mb-1">地點變更</h5>
+                            <h5 class="font-bold text-[#2c2a29] text-sm mb-1">地點變更備註</h5>
                             <p class="text-xs text-[#5c554b] leading-relaxed">
-                                <span class="font-bold text-amber-800">派對地點已改辦於「宜蘭頭城 海吉兒民宿」</span>（宜蘭縣頭城鎮外澳里濱海路二段1巷11號），請大家提前規劃好車程或接駁路線。
+                                <span class="font-bold text-amber-800">特別提醒：</span>派對地點已改辦於<b>「宜蘭頭城 海吉兒民宿」</b>（宜蘭縣頭城鎮外澳里濱海路二段1巷11號），請大家提前規劃好車程或交通路線。
                             </p>
                         </div>
                     </div>
@@ -338,7 +302,7 @@
                         <div class="mt-1 w-8 h-8 rounded-full bg-[#b89742]/10 text-[#967325] flex items-center justify-center shrink-0"><i class="fa-solid fa-utensils"></i></div>
                         <div>
                             <h5 class="font-bold text-[#2c2a29] text-sm mb-1">餐飲與補給安排</h5>
-                            <p class="text-xs text-[#5c554b] leading-relaxed">現場將備有豐富的烤肉餐點與歡唱 KTV，讓大家在遊戲之餘也能補充滿滿的「♥︎♥︎♥︎♡」。</p>
+                            <p class="text-xs text-[#5c554b] leading-relaxed">現場將備有豐富的烤肉餐點與歡唱 KTV，讓大家在遊戲之餘也能補充滿滿的心心與體力。</p>
                         </div>
                     </div>
                     <div class="flex items-start space-x-4 bg-white/60 p-5 rounded-2xl border border-[#b89742]/20">
@@ -353,14 +317,14 @@
         </section>
 
         <!-- ==================== 8. 地點資訊 (僅派對場可見) ==================== -->
-        <section id="section-maps" class="max-w-4xl mx-auto px-4 space-y-12">
+        <section id="section-maps" class="hidden max-w-4xl mx-auto px-4 space-y-12">
             <div class="text-center space-y-2">
                 <span class="font-serif-elegant text-xs tracking-[0.2em] text-amber-700 uppercase block">Location &amp; Map</span>
                 <h3 class="font-serif-elegant text-2xl font-bold text-forest">活動地點指引</h3>
             </div>
 
             <!-- 朋友派對地點地圖 (海吉兒民宿) -->
-            <div id="map-party" class="hidden zelda-switch-card p-8 md:p-10 rounded-3xl shadow-lg space-y-4">
+            <div id="map-party" class="zelda-switch-card p-8 md:p-10 rounded-3xl shadow-lg space-y-4">
                 <div class="flex flex-col md:flex-row md:items-center justify-between pb-4 border-b border-stone-200/60">
                     <div>
                         <h4 class="text-lg font-bold text-[#2c2a29]"><i class="fa-solid fa-hotel text-[#967325] mr-2"></i>海吉兒民宿 (宜蘭頭城)</h4>
@@ -385,7 +349,7 @@
         </section>
 
         <!-- ==================== 9. 活動流程 (僅派對場可見) ==================== -->
-        <section id="section-timeline" class="max-w-4xl mx-auto px-4">
+        <section id="section-timeline" class="hidden max-w-4xl mx-auto px-4">
             <div class="zelda-switch-card rounded-3xl shadow-xl overflow-hidden p-10 md:p-14 space-y-10 relative">
                 <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-50/10 via-transparent to-transparent pointer-events-none"></div>
                 <div class="max-w-xl mx-auto text-center space-y-4 relative z-10">
@@ -464,7 +428,7 @@
                 </div>
 
                 <!-- 活動流程備註小字 -->
-                <p class="text-center text-xs text-stone-400 pt-4 border-t border border-stone-200/50 max-w-xs mx-auto">
+                <p class="text-center text-xs text-stone-400 pt-4 border-t border-stone-200/50 max-w-xs mx-auto">
                     * 活動流程為參考，請以現場實際安排為主
                 </p>
             </div>
@@ -492,6 +456,6 @@
         </div>
     </footer>
 
-<script type="module" src="script.js?v=8"></script>
+<script type="module" src="script.js?v=9"></script>
 </body>
 </html>
